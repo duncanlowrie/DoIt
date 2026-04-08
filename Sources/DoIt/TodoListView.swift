@@ -43,8 +43,27 @@ struct TodoListView: View {
                 .listStyle(.plain)
                 .scrollContentBackground(.hidden)
             }
+
+            Divider()
+
+            HStack {
+                Text("⌃⌥⌘T")
+                    .font(.system(size: 11, design: .monospaced))
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Button("Quit") {
+                    NSApp.terminate(nil)
+                }
+                .buttonStyle(.plain)
+                .font(.system(size: 11))
+                .foregroundStyle(.secondary)
+                .keyboardShortcut("q", modifiers: .command)
+            }
+            .padding(.horizontal, 12)
+            .padding(.vertical, 6)
+            .background(Color(nsColor: .textBackgroundColor))
         }
-        .frame(width: 320, height: 420)
+        .frame(width: 320, height: 448)
         .background(Color(nsColor: .windowBackgroundColor))
         .onAppear { inputFocused = true }
     }
